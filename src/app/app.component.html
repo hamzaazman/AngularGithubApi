@@ -1,38 +1,54 @@
-<nav class="navbar  sticky-top navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><b>Angular Github Api</b></a>
   </div>
 </nav>
 
-<div class="container ">
-
+<div class="container">
   <!--<label for="userName">Github kullanıcı adınızla projelerinizi listeleyin</label>-->
 
-<div class="form-group row  input-group d-flex justify-content-center">
-<div class="col-xs-6">
-  <input type="text" class="form-control" [(ngModel)]="userName" placeholder="Github User Name" aria-describedby="button-addon2">
-</div>
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getRepos(); userName='';">Search</button>
-</div>
-
-<div *ngIf="loading">loading...</div>
-
-<div *ngIf="errorMessage" class="alert alert-warning">
-  <strong>Warning!</strong> {{errorMessage | json}}
-</div>
-
-  <div class="list-group" *ngFor="let repo of repos;">
-    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"><strong>{{repo.name}}</strong></h5>
-        <small>{{repo.created_at | date : 'dd-MMM-yyyy' }}</small>
-      </div>
-      <p class="mb-1">{{repo.description}}.</p>
-    </a>
+  <div class="form-group row input-group d-flex justify-content-center">
+    <div class="col-xs-6">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="userName"
+        placeholder="Github User Name"
+        aria-describedby="button-addon2"
+        (keyup.enter)="getRepos()"
+      />
+    </div>
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      id="button-addon2"
+      (click)="getRepos(); userName = ''"
+    >
+      Search
+    </button>
   </div>
 
+  <div *ngIf="loading">loading...</div>
+
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    <strong>Warning!</strong> {{ errorMessage | json }}
+  </div>
+
+  <div class="list-group" *ngFor="let repo of repos">
+    <a
+      href="#"
+      class="list-group-item list-group-item-action"
+      aria-current="true"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+          <strong>{{ repo.name }}</strong>
+        </h5>
+        <small>{{ repo.created_at | date: "dd-MMM-yyyy" }}</small>
+      </div>
+      <p class="mb-1">{{ repo.description }}.</p>
+    </a>
+  </div>
 </div>
 
-
-
-<!--<pre>{{repos | json}}</pre>-->
+<pre>{{ repos | json }}</pre>
