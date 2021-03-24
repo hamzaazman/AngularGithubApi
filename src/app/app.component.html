@@ -15,7 +15,7 @@
         [(ngModel)]="userName"
         placeholder="Github User Name"
         aria-describedby="button-addon2"
-        (keyup.enter)="getRepos(); "
+        (keyup.enter)="getRepos()"
         autofocus
       />
     </div>
@@ -37,7 +37,8 @@
 
   <div class="list-group" *ngFor="let repo of repos">
     <a
-      href="#"
+      href="{{ repo.html_url }}"
+      target="_blank"
       class="list-group-item list-group-item-action"
       aria-current="true"
     >
@@ -48,9 +49,12 @@
         <small>{{ repo.created_at | date: "dd-MMM-yyyy" }}</small>
       </div>
       <p class="mb-1">{{ repo.description }}.</p>
-      <p></p>
+      <small>
+        {{ repo.language }} <i class="bi bi-star-fill"></i>
+        {{ repo.stargazers_count }}
+      </small>
     </a>
   </div>
 </div>
 
-<pre>{{ repos | json }}</pre>
+<!--<pre>{{ repos | json }}</pre>-->
