@@ -15,7 +15,8 @@
         [(ngModel)]="userName"
         placeholder="Github User Name"
         aria-describedby="button-addon2"
-        (keyup.enter)="getRepos()"
+        (keyup.enter)="getRepos(); "
+        autofocus
       />
     </div>
     <button
@@ -47,6 +48,7 @@
         <small>{{ repo.created_at | date: "dd-MMM-yyyy" }}</small>
       </div>
       <p class="mb-1">{{ repo.description }}.</p>
+      <p></p>
     </a>
   </div>
 </div>
