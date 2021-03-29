@@ -5,8 +5,6 @@
 </nav>
 
 <div class="container">
-  <!--<label for="userName">Github kullanıcı adınızla projelerinizi listeleyin</label>-->
-
   <div class="form-group row input-group d-flex justify-content-center">
     <div class="col-xs-6">
       <input
@@ -49,10 +47,13 @@
         <small>{{ repo.created_at | date: "dd-MMM-yyyy" }}</small>
       </div>
       <p class="mb-1">{{ repo.description }}.</p>
-      <small>
-        {{ repo.language }} <i class="bi bi-star-fill"></i>
-        {{ repo.stargazers_count }}
-      </small>
+      <div class="d-flex flex-row">
+        <small>{{ repo.language }}</small>
+        <small class="ml-3">
+          <i class="bi bi-star-fill"></i>
+          {{ repo.stargazers_count }}
+        </small>
+      </div>
     </a>
   </div>
 </div>
